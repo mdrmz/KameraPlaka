@@ -1,6 +1,5 @@
 import cv2
 import time
-import matplotlib.pyplot as plt
 import numpy as np
 
 
@@ -69,33 +68,35 @@ def plaka_konum_don(img):
                 return plaka
     return []
 
-cap = cv2.VideoCapture(1)
 
-pTime = 0
-cTime = 0
-
-while True:
-    success ,img = cap.read()
-
-    img = cv2.resize(img, (500, 500))
-    plaka = plaka_konum_don(img)
-    x, y, w, h = plaka
-    if (w > h):
-        plaka_bgr = img[y:y + h, x:x + w].copy()
-       # cv2.imwrite("plaka.jpg",plaka_bgr)
-    else:
-        plaka_bgr = img[y:y + w, x:x + h].copy()
-
-    img = cv2.cvtColor(plaka_bgr, cv2.COLOR_BGR2RGB)
-
-
-    cTime = time.time()
-    fps = 1 / (cTime - pTime)
-    pTime = cTime
-
-    cv2.putText(img, str(int(fps)), (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 255), 3)
-
-
-    #cv2.imshow('poı',img)
-    #cv2.waitKey(1)
-    #plt.show()
+("\n"
+ "cap = cv2.VideoCapture(1)\n"
+ "\n"
+ "pTime = 0\n"
+ "cTime = 0\n"
+ "\n"
+ "while True:\n"
+ "    success ,img = cap.read()\n"
+ "\n"
+ "    img = cv2.resize(img, (500, 500))\n"
+ "    plaka = plaka_konum_don(img)\n"
+ "    x, y, w, h = plaka\n"
+ "    if (w > h):\n"
+ "        plaka_bgr = img[y:y + h, x:x + w].copy()\n"
+ "       # cv2.imwrite(\"plaka.jpg\",plaka_bgr)\n"
+ "    else:\n"
+ "        plaka_bgr = img[y:y + w, x:x + h].copy()\n"
+ "\n"
+ "    img = cv2.cvtColor(plaka_bgr, cv2.COLOR_BGR2RGB)\n"
+ "\n"
+ "\n"
+ "    cTime = time.time()\n"
+ "    fps = 1 / (cTime - pTime)\n"
+ "    pTime = cTime\n"
+ "\n"
+ "    cv2.putText(img, str(int(fps)), (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 255), 3)\n"
+ "\n"
+ "\n"
+ "    cv2.imshow('poı',img)\n"
+ "    cv2.waitKey(1)\n"
+ "    plt.show()\n")
